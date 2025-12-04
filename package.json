@@ -2,7 +2,7 @@
     "private": true,
     "name": "my-tauri-fullstack",
     "scripts": {
-        "dev": "concurrently \"cd backend && air\" \"cd frontend && pnpm tauri dev\"",
+        "dev": "concurrently \"cd backend && air\" \"cd frontend && pnpm tauri dev -c src-tauri/tauri.dev.conf.json\"",
         "build:backend": "cd backend && go build -o ../frontend/src-tauri/binaries/backend-x86_64-pc-windows-msvc.exe",
         "build:tauri": "cd frontend && pnpm tauri build",
         "build": "npm run build:backend && npm run build:tauri"
