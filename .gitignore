@@ -1,0 +1,59 @@
+# ---------------------------
+# Root
+# ---------------------------
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# ---------------------------
+# Frontend (Next.js + Tauri)
+# ---------------------------
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.turbo/
+frontend/.eslintcache
+
+# Tauri build artifacts
+frontend/src-tauri/target/
+frontend/src-tauri/binaries/*.exe
+frontend/src-tauri/binaries/*.dll
+frontend/src-tauri/binaries/*.so
+frontend/src-tauri/binaries/*.dylib
+
+# Tauri installer outputs
+frontend/src-tauri/gen/
+frontend/src-tauri/icons/*.icns
+frontend/src-tauri/icons/*.ico
+
+# ---------------------------
+# Backend (Go)
+# ---------------------------
+backend/tmp/
+backend/bin/
+backend/*.exe
+backend/*.out
+backend/*.log
+
+# Go build cache
+backend/go.sum
+backend/go.work
+backend/go.work.sum
+
+# ---------------------------
+# Misc
+# ---------------------------
+*.swp
+*.swo
+*.bak
+*.tmp
