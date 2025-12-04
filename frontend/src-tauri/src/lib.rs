@@ -40,11 +40,11 @@ pub fn run() {
                 // หน่วงนิดหน่อยให้ UI ขึ้นก่อน
                 tokio::time::sleep(std::time::Duration::from_millis(500)).await;
 
-                // IMPORTANT:
                 // ใน tauri.conf.json → "externalBin": ["binaries/backend"]
                 // ดังนั้นชื่อ sidecar ที่ใช้กับ shell().sidecar() คือ "backend"
                 match app_handle.shell().sidecar("backend") {
-                    Ok(mut command) => {
+                    // แก้: ไม่ต้องใช้ `mut command` เพราะไม่ได้แก้ค่า binding
+                    Ok(command) => {
                         match command.spawn() {
                             Ok((mut rx, child)) => {
                                 let pid = child.pid();
@@ -81,7 +81,8 @@ pub fn run() {
                 // ปิดแอปแล้ว ให้ kill backend ด้วย (เฉพาะ production)
                 if !cfg!(debug_assertions) {
                     if let Ok(mut guard) = window.state::<BackendProcess>().0.lock() {
-                        if let Some(mut child) = guard.take() {
+                        // แก้: ไม่ต้องใช้ `mut child` เพราะ `kill()` ใช้ &self
+                        if let Some(child) = guard.take() {
                             if let Err(e) = child.kill() {
                                 log::warn!("kill backend ไม่สำเร็จ: {e}");
                             } else {

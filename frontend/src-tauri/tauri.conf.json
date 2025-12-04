@@ -34,7 +34,12 @@
     ],
     "externalBin": [
       "binaries/backend"
-    ]
+    ],
+    "windows": {
+      "nsis": {
+        "installMode": "perMachine"
+      }
+    }
   },
   "plugins": {
     "shell": {
